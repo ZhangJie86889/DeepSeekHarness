@@ -1,0 +1,39 @@
+# Your patch layer for this dsh profile, applied after every bundle layer:
+# a top-level YAML array of loader patch entries (id-targeted config
+# overrides, disables, and insert lists; `!!js` expressions allowed).
+
+# ── user plugins ─────────────────────────────────────────────────────────────
+
+# Chat-area background image plugin (browser half injects the styles; the
+# image itself is served from the frontend dist as /chat-background.png).
+- insert:
+    - id: chat-background
+      name: 'dsh-client-chat-background'
+
+# Agent-scoped durable reminders/schedules (after / at / every) over the
+# session event log.
+- insert:
+    - id: schedule
+      name: '@deepseek-ai/dsh-schedule'
+
+# ── MCP client (kept DISABLED until a real server is configured) ──────────────
+# This plugin REQUIRES a `config` with at least one server — enabling it with
+# no config crashes the whole plugin tree (config is undefined → config.reconnect
+# throws). Uncomment + fill `config` below when you actually want an MCP server.
+# - insert:
+#     - id: mcp-client
+#       name: '@deepseek-ai/dsh-mcp-client'
+#       config:
+#         transport: stdio
+#         serverName: my-fs-server
+#         command: npx
+#         args: ['-y', '@modelcontextprotocol/server-filesystem', 'D:/Desktop']
+#         env: {}
+#         toolCallTimeoutMs: 60000
+#         failOnStartupError: false
+#         reconnect:
+#           enabled: true
+#           initialDelayMs: 1000
+#           maxDelayMs: 30000
+#           maxAttempts: 10
+

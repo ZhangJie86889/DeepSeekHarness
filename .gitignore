@@ -1,0 +1,15 @@
+# 依赖
+node_modules/
+
+# 运行时
+node/node.exe
+
+# API 密钥等凭据
+data/.credentials.yaml
+
+# 日志
+install.log
+
+# 系统文件
+Thumbs.db
+.DS_Store
