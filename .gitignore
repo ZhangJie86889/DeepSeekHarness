@@ -9,6 +9,8 @@ data/.credentials.yaml
 
 # 日志
 install.log
+harness.log
+*.log
 
 # 系统文件
 Thumbs.db
